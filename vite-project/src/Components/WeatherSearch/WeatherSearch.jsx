@@ -3,12 +3,12 @@ import { IoSearch } from "react-icons/io5";
 import background from "../Images/background.png";
 import {
   HeroSection,
-  SearchTitle,
   SearchSubTitle,
   SearchInput,
   SearchBtn,
   InfoFlex,
   VerticalLine,
+  SearchForm,
 } from "./WeatherSearch.styled.jsx";
 
 export const WeatherSearch = ({ city, setCity, onSearch }) => {
@@ -37,19 +37,19 @@ export const WeatherSearch = ({ city, setCity, onSearch }) => {
           {new Date().getDate()}th
         </SearchSubTitle>
       </InfoFlex>
-      <form onSubmit={handleSubmit}>
+      <SearchForm onSubmit={handleSubmit}>
         <SearchInput
           type="text"
           placeholder="Search location..."
           value={city || ""}
           onChange={
-            (e) => setCity(e.target.value) // Убедитесь, что setCity вызывается с правильным аргументом
+            (e) => setCity(e.target.value)
           }
         />
         <SearchBtn type="submit">
           <IoSearch size={25} />
         </SearchBtn>
-      </form>
+      </SearchForm>
     </HeroSection>
   );
 };

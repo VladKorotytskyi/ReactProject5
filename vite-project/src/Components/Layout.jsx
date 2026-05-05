@@ -1,13 +1,15 @@
 import React from 'react';
 import { Header } from "./Header/Header";
-import { WeatherSearch } from "./WeatherSearch/WeatherSearch";
+import { WeatherInfo } from "./WeatherInfo/WeatherInfo";
+import { Articles } from "./Articles/Articles";
 import { Footer } from "./Footer/Footer";   
 
 export const Layout = () => {
     return (
         <div>
             <Header/>
-            <WeatherSearch/>
+            <WeatherInfo/>
+            <Articles/>
             <Footer/>
         </div>
     );
