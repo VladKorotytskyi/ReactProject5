@@ -20,5 +20,4 @@ export const ChartTitle = styled.h2`
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-family: sans-serif;
 `;
