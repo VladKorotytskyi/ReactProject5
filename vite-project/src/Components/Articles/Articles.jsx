@@ -58,13 +58,13 @@ export const Articles = () => {
               <ArticleImage
                 src={
                   article.urlToImage ||
-                  "https://via.placeholder.com/300x200?text=No+Image"
+                  "https://placehold.jp/24/cccccc/ffffff/300x200.png?text=No+Image"
                 }
                 alt="news"
                 onError={(e) => {
                   e.target.onerror = null;
                   e.target.src =
-                    "https://via.placeholder.com/300x200?text=Image+Not+Found";
+                    "https://placehold.jp/24/cccccc/ffffff/300x200.png?text=No+Image";
                 }}
               />
             </ImageContainer>

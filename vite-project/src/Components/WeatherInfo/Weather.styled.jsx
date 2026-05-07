@@ -80,8 +80,6 @@ export const CardFooter = styled.div`
   }
 `;
 
-///* Стили для секции деталей, которая появляется при клике на "See more" */
-
 export const DetailsWrapper = styled.div`
   background: #E8E8E8;
   margin: 20px auto 50px;

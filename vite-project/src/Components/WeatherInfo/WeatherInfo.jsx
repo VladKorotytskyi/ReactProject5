@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { WeatherSearch } from "../WeatherSearch/WeatherSearch.jsx";
 import { WeatherCard } from "./WeatherCard.jsx";
+import { Graphic } from "../WeatherGraphic/Graphic.jsx";
 import { 
   CardsGrid, 
   DetailsWrapper, 
@@ -8,7 +9,6 @@ import {
   DetailItem 
 } from "./Weather.styled.jsx";
 
-// Иконки для блока деталей
 import { 
   WiThermometer, WiHumidity, WiBarometer, 
   WiStrongWind, WiDaySunny, WiCloudy 
@@ -18,6 +18,7 @@ export const WeatherInfo = () => {
   const [city, setCity] = useState("");
   const [weatherList, setWeatherList] = useState([]);
   const [selectedWeather, setSelectedWeather] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
   
   const apikey = "5daafde39481e4637f68dbb0a430841c";
 
@@ -37,9 +38,31 @@ export const WeatherInfo = () => {
     }
   };
 
+  const handleSeeMore = async (weatherItem) => {
+    setSelectedWeather(weatherItem);
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${weatherItem.name}&appid=${apikey}&units=metric`
+      );
+      const data = await response.json();
+      
+      const hourly = data.list.slice(0, 8).map(item => ({
+        time: new Date(item.dt * 1000).getHours() + ":00",
+        temp: Math.round(item.main.temp)
+      }));
+      
+      setForecastData(hourly);
+    } catch (err) {
+      console.error("Error fetching forecast", err);
+    }
+  };
+
   const handleRemove = (id) => {
     setWeatherList((prev) => prev.filter((item) => item.id !== id));
-    if (selectedWeather?.id === id) setSelectedWeather(null);
+    if (selectedWeather?.id === id) {
+        setSelectedWeather(null);
+        setForecastData(null);
+    }
   };
 
   return (
@@ -52,55 +75,59 @@ export const WeatherInfo = () => {
             key={data.id}
             weather={data}
             onRemove={() => handleRemove(data.id)}
-            onSeeMore={() => setSelectedWeather(data)}
+            onSeeMore={() => handleSeeMore(data)}
           />
         ))}
       </CardsGrid>
 
       {selectedWeather && (
-        <DetailsWrapper>
-          <h2 style={{ textAlign: 'center', marginBottom: '30px', color: '#333' , fontSize: '24px', fontWeight: '500' }}>
-            Weather details for {selectedWeather.name}
-          </h2>
-          
-          <DetailsGrid>
-            <DetailItem>
-              <span>Feels like</span>
-              <span>{Math.round(selectedWeather.main.feels_like)}°C</span>
-              <WiThermometer className="icon-detail" color="#FFB36C" />
-            </DetailItem>
+        <>
+          <DetailsWrapper>
+            <h2 style={{ textAlign: 'center', marginBottom: '30px', color: '#333' , fontSize: '24px', fontWeight: '500' }}>
+              Weather details for {selectedWeather.name}
+            </h2>
             
-            <DetailItem>
-              <span>Min / Max</span>
-              <span>{Math.round(selectedWeather.main.temp_min)}° / {Math.round(selectedWeather.main.temp_max)}°</span>
-              <WiDaySunny className="icon-detail" color="#FFB36C" />
-            </DetailItem>
-            
-            <DetailItem>
-              <span>Humidity</span>
-              <span>{selectedWeather.main.humidity}%</span>
-              <WiHumidity className="icon-detail" color="#4A90E2" />
-            </DetailItem>
-            
-            <DetailItem>
-              <span>Pressure</span>
-              <span>{selectedWeather.main.pressure} Pa</span>
-              <WiBarometer className="icon-detail" color="#666" />
-            </DetailItem>
-            
-            <DetailItem>
-              <span>Wind speed</span>
-              <span>{selectedWeather.wind.speed} m/s</span>
-              <WiStrongWind className="icon-detail" color="#888" />
-            </DetailItem>
-            
-            <DetailItem>
-              <span>Condition</span>
-              <span>{selectedWeather.weather[0].main}</span>
-              <WiCloudy className="icon-detail" color="#FFB36C" />
-            </DetailItem>
-          </DetailsGrid>
-        </DetailsWrapper>
+            <DetailsGrid>
+              <DetailItem>
+                <span>Feels like</span>
+                <span>{Math.round(selectedWeather.main.feels_like)}°C</span>
+                <WiThermometer className="icon-detail" color="#FFB36C" />
+              </DetailItem>
+              
+              <DetailItem>
+                <span>Min / Max</span>
+                <span>{Math.round(selectedWeather.main.temp_min)}° / {Math.round(selectedWeather.main.temp_max)}°</span>
+                <WiDaySunny className="icon-detail" color="#FFB36C" />
+              </DetailItem>
+              
+              <DetailItem>
+                <span>Humidity</span>
+                <span>{selectedWeather.main.humidity}%</span>
+                <WiHumidity className="icon-detail" color="#4A90E2" />
+              </DetailItem>
+              
+              <DetailItem>
+                <span>Pressure</span>
+                <span>{selectedWeather.main.pressure} hPa</span>
+                <WiBarometer className="icon-detail" color="#666" />
+              </DetailItem>
+              
+              <DetailItem>
+                <span>Wind speed</span>
+                <span>{selectedWeather.wind.speed} m/s</span>
+                <WiStrongWind className="icon-detail" color="#888" />
+              </DetailItem>
+              
+              <DetailItem>
+                <span>Condition</span>
+                <span>{selectedWeather.weather[0].main}</span>
+                <WiCloudy className="icon-detail" color="#FFB36C" />
+              </DetailItem>
+            </DetailsGrid>
+          </DetailsWrapper>
+
+          {forecastData && <Graphic forecast={forecastData} />}
+        </>
       )}
     </div>
   );
