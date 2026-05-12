@@ -1,30 +1,52 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
-export const Container = styled.View`
-  flex: 1;
+export const Section = styled.section`
+  padding: 80px 0;
   background-color: #fff;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
 `;
 
-export const Title = styled.Text`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  align-self: flex-start;
-  padding-left: 20px;
+export const Title = styled.h2`
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 5%;
+  margin-bottom: 50px;
   color: #333;
 `;
 
-export const CardContainer = styled.View`
-  width: 100%;
-  height: 250px;
-  justify-content: center;
-  align-items: center;
+export const SliderWrapper = styled.div`
+  .swiper {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .swiper-slide {
+    width: 384px;
+    height: 211px; 
+    transition: all 0.4s ease;
+    filter: brightness(0.4);
+    transform: scale(0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide-active {
+    filter: brightness(1);
+    transform: scale(1.1);
+    z-index: 2;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+  }
 `;
 
-export const ImageStyled = styled.Image`
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-`;

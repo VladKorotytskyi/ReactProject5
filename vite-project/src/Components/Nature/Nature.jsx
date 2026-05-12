@@ -1,56 +1,47 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
-import Carousel from 'react-native-reanimated-carousel';
-import { interpolate } from 'react-native-reanimated';
-import * as S from './Nature.styled';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EffectCoverflow } from 'swiper/modules';
 
-const { width } = Dimensions.get('window');
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
 
-const DATA = [
-  { id: '1', uri: 'https://example.com/nature1.jpg' },
-  { id: '2', uri: 'https://example.com/nature2.jpg' },
-  { id: '3', uri: 'https://example.com/nature3.jpg' },
-  { id: '4', uri: 'https://example.com/nature4.jpg' },
-  { id: '5', uri: 'https://example.com/nature5.jpg' },
-];
+import { Section, Title, SliderWrapper } from './Nature.styled';
 
-export const NatureCarousel = () => {
-  const baseOptions = {
-    vertical: false,
-    width: width * 0.6,
-    height: 250,
-  };
+export const Nature = () => {
+  const images = [
+    'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800',
+    'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800',
+    'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=800',
+    'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800',
+    'https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?w=800',
+  ];
 
   return (
-    <S.Container>
-      <S.Title>Beautiful nature</S.Title>
-      
-      <Carousel
-        {...baseOptions}
-        style={{
-          width: width,
-          justifyContent: 'center',
-        }}
-        loop
-        autoPlay={false}
-        data={DATA}
-        pagingEnabled={true}
-        snapEnabled={true}
-        mode="parallax"
-        modeConfig={{
-          parallaxScrollingScale: 0.85,
-          parallaxScrollingOffset: 100,
-          parallaxAdjacentItemAlpha: 0.5,
-        }}
-        renderItem={({ item }) => (
-          <S.CardContainer>
-            <S.ImageStyled 
-              source={{ uri: item.uri }} 
-              resizeMode="cover"
-            />
-          </S.CardContainer>
-        )}
-      />
-    </S.Container>
+    <Section>
+      <Title>Beautiful nature</Title>
+      <SliderWrapper>
+        <Swiper
+          effect={'coverflow'}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={'auto'}
+          loop={true}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: false,
+          }}
+          modules={[EffectCoverflow]}
+        >
+          {images.map((src, index) => (
+            <SwiperSlide key={index}>
+              <img src={src} alt="nature" />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </SliderWrapper>
+    </Section>
   );
 };

@@ -9,6 +9,7 @@ import {
   InfoFlex,
   VerticalLine,
   SearchForm,
+  HeroTitle
 } from "./WeatherSearch.styled.jsx";
 
 export const WeatherSearch = ({ city, setCity, onSearch }) => {
@@ -21,6 +22,7 @@ export const WeatherSearch = ({ city, setCity, onSearch }) => {
 
   return (
     <HeroSection $bg={background}>
+      <HeroTitle>Weather Search</HeroTitle>
       <InfoFlex>
         <SearchSubTitle>
           Create your personal list of <br /> favorite cities and always be

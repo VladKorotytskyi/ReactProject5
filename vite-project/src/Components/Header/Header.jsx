@@ -6,7 +6,8 @@ import {
   Nav, 
   ModalOverlay, 
   ModalContent, 
-  CloseBtn 
+  CloseBtn,
+  Logo
 } from "./Header.styled";
 import heroLogo from "../Images/heroLogo.png";
 
@@ -20,7 +21,7 @@ export const Header = () => {
       <div className="container">
         <Nav>
           <div style={{ display: "flex" }}>
-            <img src={heroLogo} alt="logo" />
+            <Logo src={heroLogo} alt="logo" />
             <div style={{ display: "flex", gap: "30px", marginLeft: "111px", marginTop: "24px" }}>
               <HeroText>Who we are</HeroText>
               <HeroText>Contacts</HeroText>

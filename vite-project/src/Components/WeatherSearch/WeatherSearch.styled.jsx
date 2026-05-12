@@ -1,7 +1,20 @@
 import styled from "styled-components";
 
+export const HeroTitle = styled.h1`
+  font-weight: 600;
+  font-size: 35px;
+  color: #fff;
+  margin-bottom: 60px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+`;
+
 export const HeroSection = styled.div`
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${props => props.$bg});
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(${(props) => props.$bg});
   background-position: center;
   background-size: cover;
   min-height: 550px;
@@ -21,6 +34,11 @@ export const InfoFlex = styled.div`
   margin-bottom: 60px;
   width: 100%;
   max-width: 800px;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
 `;
 
 export const SearchSubTitle = styled.h3`
@@ -29,6 +47,12 @@ export const SearchSubTitle = styled.h3`
   line-height: 1.4;
   text-align: left;
   margin: 0;
+
+  @media (max-width: 768px) {
+    font-weight: 500;
+    font-size: 14px;
+    color: #fff;
+  }
 `;
 
 export const VerticalLine = styled.div`
@@ -36,6 +60,10 @@ export const VerticalLine = styled.div`
   height: 80px;
   background-color: white;
   opacity: 0.8;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const SearchForm = styled.form`
@@ -64,7 +92,7 @@ export const SearchBtn = styled.button`
   border-radius: 0 12px 12px 0;
   width: 60px;
   height: 50px;
-  background: #FFB36C;
+  background: #ffb36c;
   border: none;
   cursor: pointer;
   display: flex;
@@ -75,7 +103,7 @@ export const SearchBtn = styled.button`
   &:hover {
     background: #ffa04d;
   }
-  
+
   svg {
     color: #333;
   }

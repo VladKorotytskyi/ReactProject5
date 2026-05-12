@@ -4,6 +4,10 @@ export const ArticlesSection = styled.section`
   max-width: 1200px;
   margin: 60px auto;
   padding: 0 20px;
+
+    @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 
 export const SectionTitle = styled.h2`

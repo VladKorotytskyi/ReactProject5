@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const Logo = styled.img`
+@media (max-width: 764px) {
+  width: 50px;
+  height: 50px;
+}
+`
 export const HeroText = styled.p`
   font-weight: 500;
   font-size: 12px;
