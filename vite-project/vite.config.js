@@ -8,4 +8,11 @@ export default defineConfig({
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
+  optimizeDeps: {
+    include: [
+      'react-native-reanimated-carousel',
+      'react-native-reanimated',
+      'react-native-gesture-handler'
+    ],
+  },
 })
