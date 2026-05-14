@@ -60,6 +60,11 @@ export const HeroText = styled.p`
   font-weight: 500;
   font-size: 14px;
   cursor: pointer;
+  transition: all 0.2s ease;
+    &:hover {
+      
+      color: #ffb36c;
+  }
 `;
 
 export const UserSection = styled.div`
@@ -89,6 +94,16 @@ export const HeroBtn = styled.button`
   height: 38px;
   border-radius: 10px;
   background-color: #ffb36c;
+  transition: all 0.2s ease;
+  &:hover {
+    background: #ffa04d;
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 `;
 
 export const ModalOverlay = styled.div`

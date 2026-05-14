@@ -70,6 +70,16 @@ export const SearchForm = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
+    transition: all 0.2s ease;
+  &:hover,
+  &:focus {
+  border-color: #fff;
+  box-shadow: 
+    0 0 5px #ffb36c, 
+    0 0 10px #ffb36c, 
+    0 0 20px #ffb36c,  
+    0 0 40px #ffb36c;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -82,6 +92,7 @@ export const SearchInput = styled.input`
   font-size: 16px;
   outline: none;
   color: #333;
+
 
   @media (max-width: 768px) {
     width: 250px;
