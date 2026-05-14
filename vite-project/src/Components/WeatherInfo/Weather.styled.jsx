@@ -13,11 +13,11 @@ export const CardsGrid = styled.div`
 `;
 
 export const Card = styled.div`
-  background: #E5E5E5;
+  background: #e5e5e5;
   border-radius: 30px;
   padding: 25px;
   color: #333;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -30,7 +30,7 @@ export const Card = styled.div`
 
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
   }
 `;
 export const CardHeader = styled.div`
@@ -48,7 +48,7 @@ export const CardTemp = styled.h2`
 `;
 
 export const OrangeBadge = styled.button`
-  background: #FFB36C;
+  background: #ffb36c;
   padding: 8px 14px;
   border-radius: 12px;
   font-size: 11px;
@@ -76,24 +76,33 @@ export const CardFooter = styled.div`
     cursor: pointer;
     color: #555;
     transition: transform 0.2s;
-    &:hover { transform: scale(1.2); color: #000; }
+    &:hover {
+      transform: scale(1.2);
+      color: #000;
+    }
   }
 `;
 
 export const DetailsWrapper = styled.div`
-  background: #E8E8E8;
+  background: #e8e8e8;
   margin: 20px auto 50px;
   padding: 40px;
   border-radius: 40px;
   max-width: 900px;
   width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   /* Анимация плавного появления */
   animation: fadeIn 0.5s ease-in-out;
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 `;
 
@@ -111,7 +120,7 @@ export const DetailsGrid = styled.div`
 `;
 
 export const DetailItem = styled.div`
-  background: #D9D9D9;
+  background: #d9d9d9;
   padding: 20px;
   border-radius: 25px;
   display: flex;
@@ -120,7 +129,9 @@ export const DetailItem = styled.div`
   gap: 10px;
   transition: background 0.3s;
 
-  &:hover { background: #cfcfcf; }
+  &:hover {
+    background: #cfcfcf;
+  }
 
   span:first-child {
     font-size: 13px;

@@ -5,7 +5,7 @@ export const ArticlesSection = styled.section`
   margin: 60px auto;
   padding: 0 20px;
 
-    @media (max-width: 1024px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 `;
@@ -33,7 +33,7 @@ export const ArticlesGrid = styled.div`
 
 export const ImageContainer = styled.div`
   width: 100%;
-  height: 200px; 
+  height: 200px;
   overflow: hidden;
   border-radius: 20px;
   background-color: #eee;
@@ -50,7 +50,7 @@ export const ArticleCard = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
-  min-height: 320px; 
+  min-height: 320px;
 
   &:hover ${ArticleImage} {
     transform: scale(1.05);
@@ -65,14 +65,14 @@ export const ArticleText = styled.p`
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 4.2em; 
+  height: 4.2em;
 `;
 
 export const SeeMoreMainBtn = styled.button`
-  background: #FFB36C;
+  background: #ffb36c;
   border: none;
   border-radius: 12px;
   padding: 14px 40px;

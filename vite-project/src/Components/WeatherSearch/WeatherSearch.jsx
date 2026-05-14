@@ -9,7 +9,7 @@ import {
   InfoFlex,
   VerticalLine,
   SearchForm,
-  HeroTitle
+  HeroTitle,
 } from "./WeatherSearch.styled.jsx";
 
 export const WeatherSearch = ({ city, setCity, onSearch }) => {
@@ -44,9 +44,7 @@ export const WeatherSearch = ({ city, setCity, onSearch }) => {
           type="text"
           placeholder="Search location..."
           value={city || ""}
-          onChange={
-            (e) => setCity(e.target.value)
-          }
+          onChange={(e) => setCity(e.target.value)}
         />
         <SearchBtn type="submit">
           <IoSearch size={25} />
